@@ -53,8 +53,6 @@ print (knight_black)
         return ()"""
     
     
-
-
 """
 f_u = open(filename_u,'r')
 f_i = open(filename_i,'w')              
@@ -65,4 +63,5 @@ for line in f_u:
 f_u.close()
 f_i.close()
 """
+
 

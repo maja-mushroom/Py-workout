@@ -1,0 +1,4 @@
+Ovo su vasi moguci potezi['c5', 'b6', 'b2', 'c3']
+Ovo su vasi moguci potezi['a5', 'c5', 'd6']
+Impossible
+Skakac se nalazi na polju: ['g6']

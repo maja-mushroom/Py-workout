@@ -35,13 +35,58 @@ def moves(knight):
 # ulaz je lista
 # izlaz 
 target = [2,3]  
-#def count_moves(target):
-knight_white = []
-knight_white = moves([2,4])
-print (knight_white)
-knight_black = []
-knight_black = moves([4,2])
-print (knight_black)
+def count_moves(target):
+   # visited = []
+    target = ",".join(target)
+    knight_white = []
+    knight_white = moves([0,7])
+    print (knight_white)
+    knight_black = []
+    knight_black = moves([7,0])
+    print (knight_black)
+    count = 0
+    lista_dist = []
+    """
+    while count < 4:
+        dist = 0
+        knight_white = moves([])
+        for i in knight_white:
+            if i == target:
+                print("Pobjeda", knight_white)
+            if i != target:
+                dist = len(moves(i))
+                lista_dist.append(dist)
+        minpos = lista_dist.index(min(lista_dist))
+        knight_white[minpos]
+        print(knight_white[minpos])"""
+
+white_mov1 = moves([0,7])
+white_mov2 = []
+white_mov3 = []
+white_mov4 = []
+
+for i in white_mov1:
+    white_mov2 += (moves(i))
+for i in white_mov2:
+    white_mov3 += (moves(i))
+for i in white_mov3:
+    white_mov4 += (moves(i))
+print(white_mov4)
+            
+        
+
+            
+
+
+
+                
+
+            
+
+
+
+
+
 """if len(knight_white) == 4 and len(knight_black) == 4:
        if len(knight_white)> len(knight_black):
            return (knight_black)

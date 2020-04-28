@@ -34,71 +34,37 @@ def moves(knight):
 # ova funkcija nam broji poteze dva skakača i dolazak na njegovo ciljano mjesto 
 # ulaz je lista
 # izlaz 
-target = [2,3]  
 def count_moves(target):
-   # visited = []
-    target = ",".join(target)
-    knight_white = []
-    knight_white = moves([0,7])
-    print (knight_white)
-    knight_black = []
-    knight_black = moves([7,0])
-    print (knight_black)
-    count = 0
-    lista_dist = []
-    """
-    while count < 4:
-        dist = 0
-        knight_white = moves([])
-        for i in knight_white:
-            if i == target:
-                print("Pobjeda", knight_white)
-            if i != target:
-                dist = len(moves(i))
-                lista_dist.append(dist)
-        minpos = lista_dist.index(min(lista_dist))
-        knight_white[minpos]
-        print(knight_white[minpos])"""
+    count = 0   
+    white_mov1 = moves([0,7])
+    white_mov2 = []
+    white_mov3 = []
+    white_mov4 = []
+    for i in white_mov1:
+        white_mov2 += (moves(i))
+    fin_list = list(set(white_mov2) - set(white_mov1))
+    if target in fin_list:
+        count += 1
+        return(count)
+    for i in white_mov2:
+        white_mov3 += (moves(i))
+    fin_list = list(set(white_mov3) - set(white_mov2) - set(white_mov1))
+    if target in  fin_list:
+        count += 1
+        print(count)
+        return (target)   
+    for i in white_mov3:
+        white_mov4 += (moves(i))
+    fin_list = list(set(white_mov4) - set(white_mov3) - set(white_mov2) - set(white_mov1))
+    if target in  fin_list:
+        count += 1
+        return(count)
+print (count_moves("23"))
 
-white_mov1 = moves([0,7])
-white_mov2 = []
-white_mov3 = []
-white_mov4 = []
+                 
+ 
+"""    
 
-for i in white_mov1:
-    white_mov2 += (moves(i))
-for i in white_mov2:
-    white_mov3 += (moves(i))
-for i in white_mov3:
-    white_mov4 += (moves(i))
-print(white_mov4)
-            
-        
-
-            
-
-
-
-                
-
-            
-
-
-
-
-
-"""if len(knight_white) == 4 and len(knight_black) == 4:
-       if len(knight_white)> len(knight_black):
-           return (knight_black)
-       elif len(knight_black) > len(knight_white):
-           return (knight_white)
-       elif len(knight_white)== len(knight_black):
-           return ("Nerijeseno")
-    else:
-        return ()"""
-    
-    
-"""
 f_u = open(filename_u,'r')
 f_i = open(filename_i,'w')              
 for line in f_u:

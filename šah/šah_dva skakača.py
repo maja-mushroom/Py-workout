@@ -6,9 +6,9 @@ filename_i = os.path.join(here,"izlaz1.txt")
 lista_next_x = []
 lista_next_y = []
 lista_next =[]
-# ova funkcija nam vraća sve moguće poteze skakača
-# ulaz je int
-# izlaz je lista
+# ova funkcija nam vraca sve moguce poteze skakaca
+# ulaz je int - kolona i red iz tabele (kretanje skakaca)
+# izlaz je list - lista mogucih poteza
 def moves(knight):
     lista_next =[]
     x_next = 0
@@ -26,17 +26,16 @@ def moves(knight):
           lista_next_x.append(x_next)
           lista_next_y.append(y_next)
           lista_next.append(str(x_next) + str(y_next))
-    #print(lista_next)
     return (lista_next)
-#print(moves([0,7]))
-#print(moves([7,0]))
 
-# ova funkcija nam broji poteze dva skakača i dolazak na njegovo ciljano mjesto 
-# ulaz je lista
-# izlaz 
-def count_moves(target):
-    count = 0   
-    white_mov1 = moves([0,7])
+
+# ova funkcija nam broji poteze dva skakaca i dolazak na njegovo ciljano mjesto 
+# ulaz je str - satrat - poteza skakaca
+# ulaz je str - target koji predstavlja cilj
+# izlaz int - broj poteza skakaca
+def count_moves(target, start):
+    count = 1   
+    white_mov1 = moves(start)
     white_mov2 = []
     white_mov3 = []
     white_mov4 = []
@@ -45,35 +44,44 @@ def count_moves(target):
     fin_list = list(set(white_mov2) - set(white_mov1))
     if target in fin_list:
         count += 1
-        return(count)
+        return count
     for i in white_mov2:
         white_mov3 += (moves(i))
     fin_list = list(set(white_mov3) - set(white_mov2) - set(white_mov1))
     if target in  fin_list:
         count += 1
-        print(count)
-        return (target)   
+        return count
     for i in white_mov3:
         white_mov4 += (moves(i))
     fin_list = list(set(white_mov4) - set(white_mov3) - set(white_mov2) - set(white_mov1))
     if target in  fin_list:
         count += 1
-        return(count)
-print (count_moves("23"))
+        return count
 
-                 
- 
-"""    
 
+# ova funkcija nam poredi koji skakaca (crni,bijeli) je stigao prvi do cilja
+# ulaz string - pozicija skakaca
+# izlaz string- rezultat poredjenja
+def doit(target):
+    knight_white = count_moves(target, start = "07")
+    knight_black = count_moves (target, start = "70")
+
+    if knight_white == knight_black:
+         return("Pobjedio je bijeli skakac!")
+    elif knight_white  < knight_black:
+         return("Pobjedio je bijeli skakac!")
+    else:
+         return("Pobjedio je crni skakac!")
+
+#ulaz i izlaz u file-ove                    
 f_u = open(filename_u,'r')
 f_i = open(filename_i,'w')              
 for line in f_u:
     line = line.replace("\n","")
-    x = line.split(" ")
-    f_i.write(str(obradi(x)) + "\n")
+    f_i.write(doit(line) + "\n")
 f_u.close()
 f_i.close()
-"""
+
 
 
 

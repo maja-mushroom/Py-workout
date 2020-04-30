@@ -34,37 +34,29 @@ def moves(knight):
 # ulaz je str - target koji predstavlja cilj
 # izlaz int - broj poteza skakaca
 def count_moves(target, start):
-    count = 1   
-    white_mov1 = moves(start)
-    white_mov2 = []
-    white_mov3 = []
-    white_mov4 = []
-    for i in white_mov1:
-        white_mov2 += (moves(i))
-    fin_list = list(set(white_mov2) - set(white_mov1))
-    if target in fin_list:
+    count = 0   
+    knight = moves(start)
+    knight_step = []
+    while count < 9:
+        knight_moves = []
+        for i in knight:
+            knight_step += moves(i)
+        knight_moves = list(set(knight) - set(knight_step))
         count += 1
+        if target in knight_moves:
+             count += 1
         return count
-    for i in white_mov2:
-        white_mov3 += (moves(i))
-    fin_list = list(set(white_mov3) - set(white_mov2) - set(white_mov1))
-    if target in  fin_list:
-        count += 1
-        return count
-    for i in white_mov3:
-        white_mov4 += (moves(i))
-    fin_list = list(set(white_mov4) - set(white_mov3) - set(white_mov2) - set(white_mov1))
-    if target in  fin_list:
-        count += 1
-        return count
-
+    
 
 # ova funkcija nam poredi koji skakaca (crni,bijeli) je stigao prvi do cilja
 # ulaz string - pozicija skakaca
 # izlaz string- rezultat poredjenja
+
+    
 def doit(target):
-    knight_white = count_moves(target, start = "07")
+    knight_white = count_moves(target, start = "17")
     knight_black = count_moves (target, start = "70")
+    
 
     if knight_white == knight_black:
          return("Pobjedio je bijeli skakac!")

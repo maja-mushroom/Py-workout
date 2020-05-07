@@ -7,9 +7,17 @@
 2, Od tog broja  {} je nova slucaja.
 2, Na osnovu danasnjeg testiranja  utvrdjena su {} nova slucaja.
 2, U RS tokom danasnjeg dana su utvrdjena {} slucaja.
-2, U odnosu na jucerasnji dan broj novozarazenih se povecao za {}.
 3, Trenutno od pojave korone u RS preminulo je {}.
 3, U RS je do sada preminulo {} osoba.
 3, Do sada je od virusa korona preminulo {} ljudi u RS.
 3, Broj preminuli od kovida-19 u RS-u je {}.
 3, Broj zrtava od kovida-19 je {}.
+4, Broj novozarazenih se smanjio u proteklih 24 casa za {}.
+4, To je smanjenje u odnosu na juce za {} slucaja.
+4, Danas je manji broj zarazenih u odnosu na juce za {} slucajeva.
+5, U odnosu na juce doslo je do povecanja broj za  {} nova zarezena.
+5, U toku 24 sata broj zarazenih se poveca za {} nova slucajeva.
+5, Danas je broj zarazenih uvecana za {} nova slucajeva.
+6, Broj oporavljenih od virusa korona {}.
+6, Od virusa korona se trenutno oporavilo {} oboljeli.
+6, Trenutni broj oporavljenih od kovida-19 je {}.

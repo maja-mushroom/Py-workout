@@ -1,3 +1,5 @@
- U poslednja 24 sata uradjeno je 627 testova.
- U odnosu na jucerasnji dan broj novozarazenih se povecao za 53.
- Broj preminuli od kovida-19 u RS-u je 34.
+ Danas je uradjeno 627 testova.
+ U RS tokom danasnjeg dana su utvrdjena 53 slucaja.
+ Do sada je od virusa korona preminulo 34 ljudi u RS.
+ Broj novozarazenih se smanjio u proteklih 24 casa za 6.
+ Trenutni broj oporavljenih od kovida-19 je 381.

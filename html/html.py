@@ -3,43 +3,58 @@ import os
 import webbrowser
 
 here = os.path.dirname(os.path.abspath(__file__))
-f = open('helloworld.html','w')
+f = open('index.html','w')
 csv_ulaz = open("ulaz.csv")
 csv_ulaz = csv.reader(csv_ulaz, delimiter =",")
 next(csv_ulaz)
 
-parent_dir = "C:/Users/Maja/Desktop/Python vježbaona/Py-workout/html/index_page"
+ime = []
+datum = []
+zanimanje = []
+grad = []
+kurs = []
 
-message = """<html>
-<head></head>
-<body><p>Hello World!</p></body>
-</html>"""
 
 for i in csv_ulaz:
-    directory = i[0]
-    # Path 
-    path = os.path.join(parent_dir, directory)
-    os.mkdir(path)
-    print("Directory '% s' created" % directory)
- 
+    ime.append(i[0])
+    datum.append(i[1])
+    zanimanje.append(i[2])
+    grad.append(i[3])
+    kurs.append(i[4])
+    
+parent_dir = "C:\html\index_page"
+
+message = """<html>
+<head><link rel="stylesheet" href="bilja.css">
+<link rel="stylesheet" href="hana.css">
+<link rel="stylesheet" href="maja.css">
+</head>
+<body><h1>{}</h1></br>
+<h2>{}</h2>
+<h3>{}</h3>
+<h4>{}</h4>
+<h5>{}</h5>
+</body>
+</html>"""
+
+path = parent_dir + "\index.html"
+open_dic = webbrowser.open(path)     
+print (open_dic)
+
 
 entries = os.listdir('index_page/')
-for f in entries:
-    f = open('index.html','w')
-    f.write(message)
-    f.close()
+print(entries)
+i = 0
+for x in entries:
+    path = os.path.join(parent_dir, x, "index.html")
+    print(path)
+    f1 = open(path,'w')
+    f1.write(message.format(ime[i],datum[i],zanimanje[i],grad[i],kurs[i]))
+    f1.close()
+    webbrowser.open_new_tab(path)
+    i += 1
+
     
 
-
-
-
-f.write(message)
 f.close()
-webbrowser.open_new_tab('index.html')
-
-"""
-f_i = open(filename_i,'w')              
-f_i.write (obradi(csv_fraze1))
-f_i.close()
 csv_ulaz.close()
-csv_fraze.close()"""

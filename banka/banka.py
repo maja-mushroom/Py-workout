@@ -148,49 +148,75 @@ def transfer(account_of_withdraw, account_in_favour, amount_withdraw):
         t_file.write('%s' % balance_append[1])
         t_file.write('\n')
 
+def closing_account(account_owner, account_number):
+    lines = []
+    with open('stanje.csv','r') as csvfile:
+        reader = csv.reader(csvfile,delimiter =',')
+        
+        for row in reader:
+            lines.append(row)
+            for field in row:
+                if field == account_number:
+                    lines.remove(row)
+    with open('stanje.csv', 'w') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(lines)
+    print('You have succesfuly deleted account!')
+    
+    with open('transkacije.log', 'a') as t_file:
+        t_file.write('Account Number: %s,' % account_number)
+        t_file.write('Has been closed')
+        
 
 #menu
 # input inp - str
 def menu(inp):
-    if int(inp) == 1:
-        print('Open Account')
-        account_owner = input('First Name and Last Name:')
-        owner_jmgb = input('Owner JMBG:')
-        account_num = input('Account NUmber: ')
-        balance = input('Account Balance: ')
-        date = input('Date of opening')
-        open_account(account_num, account_owner, owner_jmgb, balance, date)
-
-    elif int(inp) == 2:
-        print('Account Balance')
-        account_number = input('Account Number: ')
-        account_owner = input('First Name and Last Name: ')
-        check_balance(account_number, account_owner)
-    
-    elif int(inp) == 3:
-        print('Account Deposit')
-        account_number = input('Account Number: ')
-        account_owner = input('First Name and Last Name: ')
-        amount = input('Enter amount: ')
-        deposit(account_number, amount)
-    
-    elif int(inp) == 4:
-        print('Account Withdraw')
-        account_number = input('Account Number: ')
-        account_owner = input('First Name and Last Name: ')
-        amount = input('Enter amount: ')
-        withdraw(account_number, amount)
-    
-    elif int(inp) == 5:
-        print('Account Transfer')
-        account_of_withdraw = input('Account Number of Withdraw: ')
-        account_owner = input('First Name and Last Name of User of withdraw: ')
-        amount_withdraw = input('Enter amount: ')
-        account_in_favour = input('First Name and Last Name of User in favour: ')
-        transfer(account_of_withdraw, account_in_favour, amount_withdraw)
-
-    elif inp == 'q':
+    if inp == 'q':
         print('Goodbuy.')
+    else:
+        if int(inp) == 1:
+            print('Open Account')
+            account_owner = input('First Name and Last Name:')
+            owner_jmgb = input('Owner JMBG:')
+            account_num = input('Account NUmber: ')
+            balance = input('Account Balance: ')
+            date = input('Date of opening')
+            open_account(account_num, account_owner, owner_jmgb, balance, date)
+
+        elif int(inp) == 2:
+            print('Account Balance')
+            account_number = input('Account Number: ')
+            account_owner = input('First Name and Last Name: ')
+            check_balance(account_number, account_owner)
+        
+        elif int(inp) == 3:
+            print('Account Deposit')
+            account_number = input('Account Number: ')
+            account_owner = input('First Name and Last Name: ')
+            amount = input('Enter amount: ')
+            deposit(account_number, amount)
+        
+        elif int(inp) == 4:
+            print('Account Withdraw')
+            account_number = input('Account Number: ')
+            account_owner = input('First Name and Last Name: ')
+            amount = input('Enter amount: ')
+            withdraw(account_number, amount)
+        
+        elif int(inp) == 5:
+            print('Account Transfer')
+            account_of_withdraw = input('Account Number of Withdraw: ')
+            account_owner = input('First Name and Last Name of User of withdraw: ')
+            amount_withdraw = input('Enter amount: ')
+            account_in_favour = input('First Name and Last Name of User in favour: ')
+            transfer(account_of_withdraw, account_in_favour, amount_withdraw)
+        
+        elif int(inp) == 6:
+            print('Close Account')
+            account_number = input('Account Number: ')
+            account_owner = input('First Name and Last Name: ')
+            closing_account(account_owner, account_number)
+
 
 
 #menu for pass check

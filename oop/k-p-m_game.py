@@ -52,6 +52,8 @@ class Game:
     
     def game_winer(self, player1, player2):
         i=1
+        player1.score = 0
+        player2.score = 0
         
         while i<7:
             print('Igra:', i, '\n')
@@ -72,11 +74,13 @@ class Game:
             
             if player1.score >= 3:
                 print('Pobjednik je prvi igrac\n')
-                break
+                return player1
             if player2.score >= 3:
                 print('Pobjednik je drugi igrac\n')
-                break
+                return player2
             i+=1
+
+        
 
 p1 = Osoba('maja', 'uiux')
 p2 = Osoba('bilja', 'ds')
@@ -86,7 +90,11 @@ p4 = Osoba('raso', 'java')
 
 
 g1 = Game(p1,p2)
-g1.game_winer(p1, p2)
+winer1 = g1.game_winer(p1, p2)
 
 g2 = Game(p3, p4)
-g2.game_winer(p3, p4)
+winer2 = g2.game_winer(p3, p4)
+
+g3 = Game(winer1, winer2)
+g3.game_winer(winer1, winer2)
+
